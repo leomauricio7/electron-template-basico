@@ -1,16 +1,110 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Electron Beta</title>
+  <link rel="stylesheet" href="./photon/css/photon.min.css">
+  <script>
+    window.nodeRequire = require;
+    delete window.require;
+    delete window.exports;
+    delete window.module;
+  </script>
+  <script>window.$ = window.jQuery = nodeRequire('jquery');</script>
+  <script src="controller.js"></script>
+</head>
+
+<body>
+  <div class="window">
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Bomedico</h1>
+
+      <div class="toolbar-actions">
+
+        <div class="btn-group">
+          <button class="btn btn-default">
+            <span class="icon icon-home"></span>
+          </button>
+          <button class="btn btn-default">
+            <span class="icon icon-folder"></span>
+          </button>
+          <button class="btn btn-default active">
+            <span class="icon icon-cloud"></span>
+          </button>
+          <button class="btn btn-default">
+            <span class="icon icon-popup"></span>
+          </button>
+          <button class="btn btn-default">
+            <span class="icon icon-shuffle"></span>
+          </button>
+        </div>
+
+        <button class="btn btn-default">
+          <span class="icon icon-home icon-text"></span>
+          Filtros
+        </button>
+        
+        <div class="btn-group pull-right" id="minimizar"> 
+          <button class="btn btn-default">
+            <span class="icon icon-minus"></span>
+          </button>
+          <button class="btn btn-default" id="maximizar">
+            <span class="icon icon-popup"></span>
+          </button>
+          <button class="btn btn-default" id="close">
+            <span class="icon icon-cancel"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="window-content">
+      <div class="pane-group">
+        <div class="pane pane-sm sidebar">
+          <nav class="nav-group">
+            <h5 class="nav-group-title">Menu</h5>
+            <span class="nav-group-item">
+              <span class="icon icon-calendar"></span>
+              Agendamentos
+            </span>
+            <span class="nav-group-item active">
+              <span class="icon icon-doc-text-inv"></span>
+              Horários
+            </span>
+            <span class="nav-group-item">
+              <span class="icon icon-lock"></span>
+              Bloqueios
+            </span>
+          </nav>
+
+          <nav class="nav-group">
+            <h5 class="nav-group-title">Conexão</h5>
+            <span class="nav-group-item" href="#">
+              <span class="icon icon-record" style="color:#34c84a"></span>
+              Conectado
+            </span>
+          </nav>
+        </div>
+        <div class="pane">
+          <table class="table-striped">
+            <thead>
+              <tr>
+                <th>Paciente</th>
+                <th>Data Consulta</th>
+                <th>Medico</th>
+                <th>Especialdidade</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+
 </html>
