@@ -1,6 +1,11 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
+
+//build dos arquivos de forma assincrona
+require('electron-reload')(__dirname + '/index.html', {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,7 +28,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -39,6 +44,9 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
 
+ipcMain.on('online-status-changed', (event, status) => {
+ console.lof(status);
+})
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   // On macOS it is common for applications and their menu bar

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Electron Beta</title>
   <link rel="stylesheet" href="./photon/css/photon.min.css">
+  <link rel="stylesheet" href="./photon/css/personalizado.css">
   <script>
     window.nodeRequire = require;
     delete window.require;
@@ -27,25 +28,11 @@
             <span class="icon icon-home"></span>
           </button>
           <button class="btn btn-default">
-            <span class="icon icon-folder"></span>
-          </button>
-          <button class="btn btn-default active">
-            <span class="icon icon-cloud"></span>
-          </button>
-          <button class="btn btn-default">
-            <span class="icon icon-popup"></span>
-          </button>
-          <button class="btn btn-default">
-            <span class="icon icon-shuffle"></span>
+            <span class="icon icon-cog"></span>
           </button>
         </div>
 
-        <button class="btn btn-default">
-          <span class="icon icon-home icon-text"></span>
-          Filtros
-        </button>
-        
-        <div class="btn-group pull-right" id="minimizar"> 
+        <div class="btn-group pull-right" id="minimizar">
           <button class="btn btn-default">
             <span class="icon icon-minus"></span>
           </button>
@@ -79,10 +66,11 @@
           </nav>
 
           <nav class="nav-group">
-            <h5 class="nav-group-title">Conexão</h5>
+            <h5 class="nav-group-title">Status Conexão</h5>
             <span class="nav-group-item" href="#">
-              <span class="icon icon-record" style="color:#34c84a"></span>
-              Conectado
+              <span class="icon icon-record" id="statusConection"></span>
+              <span id="statusTextConection"></span>
+              <img src="onLine.gif" alt="Status Conexão bomedico" class="img-gif">
             </span>
           </nav>
         </div>
